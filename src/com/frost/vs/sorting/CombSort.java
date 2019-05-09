@@ -6,6 +6,10 @@ import java.awt.*;
 
 public class CombSort extends Sort {
 
+    public CombSort() {
+        super("Comb sort");
+    }
+
     @Override
     protected void sort() throws InterruptedException {
         int gap = models.size();

@@ -8,7 +8,13 @@ import java.util.List;
 
 public abstract class Sort {
 
+    public final String name;
     protected List<Model> models;
+
+    public Sort(String name) {
+        this.name = name;
+    }
+
     protected void drawGreen() throws InterruptedException {
         models.forEach(model -> {
             try {
@@ -28,6 +34,7 @@ public abstract class Sort {
             }
         });
     }
+
     protected void swap(int i, int j){
         try {
             Model temp = models.get(i);
@@ -37,10 +44,13 @@ public abstract class Sort {
             System.err.println("ERROR!");
         }
     }
+
     public void addModels(List<Model> models){
         this.models = models;
     }
+
     protected abstract void sort() throws InterruptedException;
+
     public void start(){
         try {
             sort();
@@ -51,6 +61,7 @@ public abstract class Sort {
     protected void sleep(long sleep) throws InterruptedException {
         Thread.sleep(sleep);
     }
+
     protected void sleep() throws InterruptedException {
         Thread.sleep(Visualization.width/(models.size() * 2));
     }

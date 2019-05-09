@@ -10,7 +10,7 @@ public class Model implements Comparable {
     private Color color;
     public static final Color DEFAULT_COLOR = new Color(240, 244, 255);
     public static final Color SELECT_COLOR = new Color(255, 49, 0);
-    public static final Color CHECK_COLOR = new Color(67, 188, 178);
+    public static final Color CHECK_COLOR = new Color(0, 167, 188);
     private Visualization visualization;
 
     Model(float height, Visualization visualization) {

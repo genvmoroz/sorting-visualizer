@@ -4,6 +4,10 @@ import com.frost.vs.Model;
 
 public class SwapSort extends Sort {
 
+    public SwapSort() {
+        super("Swap sort");
+    }
+
     public void sort() throws InterruptedException {
         int left = 0;
         int right = models.size() - 1;

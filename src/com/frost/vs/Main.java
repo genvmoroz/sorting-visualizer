@@ -2,14 +2,14 @@ package com.frost.vs;
 
 import com.frost.vs.sorting.BubbleSort;
 import com.frost.vs.sorting.CombSort;
-import com.frost.vs.sorting.DefaultSort;
 import com.frost.vs.sorting.GnomeSort;
-import com.frost.vs.sorting.QuiteSort;
-import com.frost.vs.sorting.RadixSort;
+import com.frost.vs.sorting.HeapSort;
+import com.frost.vs.sorting.QuickSort;
 import com.frost.vs.sorting.SelectionSort;
 import com.frost.vs.sorting.ShellSort;
 import com.frost.vs.sorting.Sort;
 import com.frost.vs.sorting.SwapSort;
+import com.frost.vs.sorting.UsuallySort;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -34,7 +34,6 @@ public class Main {
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
-            cleanScreen();
             System.out.println("     |__________________MENU__________________|");
             System.out.println("     |             1. Add models.             |");
             System.out.println("     |             2. Random value.           |");
@@ -68,16 +67,15 @@ public class Main {
                 }
                 case 3: {
                     System.out.println("     |__________________MENU__________________|");
-                    System.out.println("     |               1. Default               |");
+                    System.out.println("     |               1. Usually               |");
                     System.out.println("     |               2. Bubble                |");
                     System.out.println("     |               3. Selection.            |");
                     System.out.println("     |               4. SwapSort.             |");
                     System.out.println("     |               5. GnomeSort.            |");
-                    System.out.println("     |               6. QuiteSort.            |");
+                    System.out.println("     |               6. QuickSort.            |");
                     System.out.println("     |               7. CombSort.             |");
                     System.out.println("     |               8. HeapSort.             |");
-                    System.out.println("     |               9. RadixSort.            |");
-                    System.out.println("     |              10. ShellSort.            |");
+                    System.out.println("     |               9. ShellSort.            |");
                     System.out.println("     |__________________Choice________________|");
                     int number = 0;
                     try {
@@ -119,10 +117,6 @@ public class Main {
                             break;
                         }
                         case 9: {
-                            start(sorting.get(Keys.RADIX));
-                            break;
-                        }
-                        case 10: {
                             start(sorting.get(Keys.SHELL));
                             break;
                         }
@@ -135,12 +129,13 @@ public class Main {
     }
 
     private static void start(Sort sort) {
+        Visualization.SORT_NAME = sort.name;
         sort.start();
         visualization.update();
     }
 
     private static void loadSort() {
-        sorting.put(Keys.DEFAULT, new DefaultSort());
+        sorting.put(Keys.DEFAULT, new UsuallySort());
         sorting.get(Keys.DEFAULT).addModels(models);
 
         sorting.put(Keys.BUBBLE, new BubbleSort());
@@ -155,7 +150,7 @@ public class Main {
         sorting.put(Keys.GNOME, new GnomeSort());
         sorting.get(Keys.GNOME).addModels(models);
 
-        sorting.put(Keys.QUITE, new QuiteSort());
+        sorting.put(Keys.QUITE, new QuickSort());
         sorting.get(Keys.QUITE).addModels(models);
 
         sorting.put(Keys.COMB, new CombSort());
@@ -163,9 +158,6 @@ public class Main {
 
         sorting.put(Keys.HEAP, new HeapSort());
         sorting.get(Keys.HEAP).addModels(models);
-
-        sorting.put(Keys.RADIX, new RadixSort());
-        sorting.get(Keys.RADIX).addModels(models);
 
         sorting.put(Keys.SHELL, new ShellSort());
         sorting.get(Keys.SHELL).addModels(models);
@@ -179,10 +171,5 @@ public class Main {
         for (; count < 0 && !models.isEmpty(); count++) {
             models.remove(0);
         }
-    }
-
-    private static void cleanScreen() {
-        for (int i = 0; i < 20; i++)
-            System.out.println();
     }
 }

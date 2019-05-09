@@ -1,5 +1,6 @@
-package com.frost.vs;
+package com.frost.vs.sorting;
 
+import com.frost.vs.Model;
 import com.frost.vs.sorting.Sort;
 
 import java.util.ArrayList;
@@ -8,11 +9,16 @@ public class HeapSort extends Sort {
 
     private static int N;
 
+    public HeapSort() {
+        super("Heap sort");
+    }
+
     private void heapify(ArrayList<Model> m) throws InterruptedException {
         N = m.size() - 1;
         for (int i = N/2; i >= 0; i--)
             maxheap(m, i);
     }
+
     private void maxheap(ArrayList<Model> m, int i) throws InterruptedException {
         int left = 2*i ;
         int right = 2*i + 1;
@@ -40,6 +46,7 @@ public class HeapSort extends Sort {
         sleep();
 
     }
+
     @Override
     protected void sort() throws InterruptedException {
 

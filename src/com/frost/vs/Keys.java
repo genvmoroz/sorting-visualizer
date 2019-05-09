@@ -8,11 +8,8 @@ public enum  Keys {
     GNOME("Gnome"),
     QUITE("Quite"),
     COMB("Comb"),
-    STUPID("Stupid"),
     HEAP("Heap"),
-    RADIX("Radix"),
     SHELL("Shell"),
-    BITONIC("Bitonic"),
     SELECTION("Selection");
 
     private String key;

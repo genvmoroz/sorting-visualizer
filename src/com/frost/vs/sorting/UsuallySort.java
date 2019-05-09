@@ -4,7 +4,11 @@ import com.frost.vs.Model;
 
 import java.awt.*;
 
-public class DefaultSort extends Sort{
+public class UsuallySort extends Sort{
+
+    public UsuallySort() {
+        super("Usually sort");
+    }
 
     protected void sort() throws InterruptedException {
         if (models != null) {
@@ -26,12 +30,5 @@ public class DefaultSort extends Sort{
             }
         }
             drawGreen();
-    }
-    public void start(){
-        try {
-            sort();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

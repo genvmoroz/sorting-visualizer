@@ -4,6 +4,10 @@ import com.frost.vs.Model;
 
 public class ShellSort extends Sort {
 
+    public ShellSort() {
+        super("Shell sort");
+    }
+
     @Override
     protected void sort() throws InterruptedException {
         int increment = models.size() / 2;

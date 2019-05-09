@@ -4,6 +4,10 @@ import com.frost.vs.Model;
 
 public class BubbleSort extends Sort {
 
+    public BubbleSort() {
+        super("Bubble sort");
+    }
+
     @Override
     protected void sort() throws InterruptedException {
         for (int i = models.size() - 1; i >= 0; i--) {

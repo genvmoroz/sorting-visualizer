@@ -4,7 +4,11 @@ import com.frost.vs.Model;
 
 import java.awt.*;
 
-public class QuiteSort extends Sort{
+public class QuickSort extends Sort{
+
+    public QuickSort() {
+        super("Quick sort");
+    }
 
     @Override
     protected void sort() throws InterruptedException {

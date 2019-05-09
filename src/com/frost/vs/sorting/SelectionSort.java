@@ -5,6 +5,11 @@ import com.frost.vs.Model;
 import java.awt.*;
 
 public class SelectionSort extends Sort{
+
+    public SelectionSort() {
+        super("Selection sort");
+    }
+
     @Override
     protected void sort() throws InterruptedException {
         for (int i = 0; i < models.size(); i++) {

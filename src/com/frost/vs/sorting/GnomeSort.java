@@ -4,6 +4,10 @@ import com.frost.vs.Model;
 
 public class GnomeSort extends Sort {
 
+    public GnomeSort() {
+        super("Gnome sort");
+    }
+
     @Override
     protected void sort() throws InterruptedException {
         int i = 1;
