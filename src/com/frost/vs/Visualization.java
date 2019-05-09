@@ -1,4 +1,4 @@
-package VisualisatorSort;
+package com.frost.vs;
 
 import javax.swing.*;
 import javax.swing.Timer;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Visualisator extends JFrame implements ActionListener{
+public class Visualization extends JFrame implements ActionListener{
 
     public static final int HEIGHT = 500;
 
@@ -18,13 +18,13 @@ public class Visualisator extends JFrame implements ActionListener{
 
     private Timer running;
 
-    Visualisator() throws HeadlessException {
-        setTitle("Visualisator");
+    Visualization() throws HeadlessException {
+        setTitle("com.frost.vs.Visualization");
         setSize(width, HEIGHT);
         setLocationRelativeTo(null);
         setVisible(true);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        running = new Timer(1, this);
+        running = new Timer(10, this);
     }
     public void addModels(Collection<Model> models){
         models.forEach(m -> {
@@ -58,10 +58,11 @@ public class Visualisator extends JFrame implements ActionListener{
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
         if (models != null && models.size() != 0){
             update();
-            models.forEach(height -> height.render(g, (float)(this.getWidth() + models.size())/models.size() - 1, (this.getHeight()) / maxHeight));
+            models.forEach(model -> model.render(g, (float)(this.getWidth() + models.size())/models.size() - 1, (this.getHeight()) / maxHeight));
         }
         g.setColor(Color.white);
         g.setFont(new Font(null, Font.PLAIN, 30));
+        g.setColor(Color.YELLOW);
         g.drawString("Array size: " + ((models != null) ? models.size() : 0), 30, 100);
         simple.drawImage(buffer, 0, 0, null);
     }

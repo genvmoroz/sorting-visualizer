@@ -1,4 +1,4 @@
-package VisualisatorSort;
+package com.frost.vs;
 
 public enum  Keys {
 

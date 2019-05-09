@@ -1,13 +1,13 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs.sorting;
 
-import VisualisatorSort.Model;
-import VisualisatorSort.Visualisator;
+import com.frost.vs.Model;
+import com.frost.vs.Visualization;
 
 import java.awt.*;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
 public abstract class Sort {
+
     protected List<Model> models;
     protected void drawGreen() throws InterruptedException {
         models.forEach(model -> {
@@ -52,6 +52,6 @@ public abstract class Sort {
         Thread.sleep(sleep);
     }
     protected void sleep() throws InterruptedException {
-        Thread.sleep(Visualisator.width/(models.size() * 2));
+        Thread.sleep(Visualization.width/(models.size() * 2));
     }
 }

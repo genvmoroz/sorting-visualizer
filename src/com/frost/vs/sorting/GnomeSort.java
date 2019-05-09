@@ -1,8 +1,9 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs.sorting;
 
-import VisualisatorSort.Model;
+import com.frost.vs.Model;
 
 public class GnomeSort extends Sort {
+
     @Override
     protected void sort() throws InterruptedException {
         int i = 1;

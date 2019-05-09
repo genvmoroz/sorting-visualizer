@@ -1,8 +1,8 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs.sorting;
 
-import VisualisatorSort.Model;
+import com.frost.vs.Model;
+
 import java.awt.*;
-
 
 public class DefaultSort extends Sort{
 

@@ -1,6 +1,7 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs;
 
-import VisualisatorSort.Model;
+import com.frost.vs.sorting.Sort;
+
 import java.util.ArrayList;
 
 public class HeapSort extends Sort {

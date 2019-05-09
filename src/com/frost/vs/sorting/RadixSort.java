@@ -1,7 +1,6 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs.sorting;
 
-
-import VisualisatorSort.Model;
+import com.frost.vs.Model;
 
 import java.util.ArrayList;
 
@@ -13,8 +12,7 @@ public class RadixSort extends Sort {
         // Loop for every bit in the integers
         for (int shift = Integer.SIZE - 1; shift > -1; shift--) {
             // The array to put the partially sorted array into
-            ArrayList<Model> tmp = new ArrayList<>();
-            models.forEach(tmp::add);
+            ArrayList<Model> tmp = new ArrayList<>(models);
             // The number of 0s
             int j = 0;
 

@@ -1,8 +1,6 @@
-package VisualisatorSort.Sorting;
+package com.frost.vs.sorting;
 
-import VisualisatorSort.Model;
-
-import java.awt.*;
+import com.frost.vs.Model;
 
 public class BubbleSort extends Sort {
 
