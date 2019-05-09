@@ -11,15 +11,14 @@ import java.util.Objects;
 
 public class Visualization extends JFrame implements ActionListener{
 
-    public static String SORT_NAME;
+    private static final int HEIGHT = 500;
 
-    static final int HEIGHT = 500;
+    static String SORT_NAME;
 
     public static int width = 800;
     public ArrayList<Model> models;
 
-    float maxHeight = 1;
-
+    private float maxHeight = 1;
     private Timer running;
 
     Visualization() throws HeadlessException {
