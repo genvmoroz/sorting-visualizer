@@ -1,7 +1,6 @@
 package com.frost.vs;
 
 import javax.swing.*;
-import javax.swing.Timer;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
-public class Visualization extends JFrame implements ActionListener{
+public class Visualization extends JFrame implements ActionListener {
 
     private static final int HEIGHT = 500;
 
@@ -30,42 +29,42 @@ public class Visualization extends JFrame implements ActionListener{
         running = new Timer(10, this);
     }
 
-    void addModels(Collection<Model> models){
+    void addModels(Collection<Model> models) {
         models.forEach(m -> {
             if (m.getHeight() > maxHeight)
                 maxHeight = m.getHeight();
         });
-        this.models = (ArrayList<Model>)models;
+        this.models = (ArrayList<Model>) models;
     }
 
-    void disSort(){
+    void disSort() {
         SORT_NAME = null;
-        if (models.size() == 0){
+        if (models.size() == 0) {
             System.out.println("Array is empty!");
             return;
         }
         models.forEach(Model::setRandHeight);
     }
 
-    void update(){
+    void update() {
         width = getWidth();
         int scaleWidth = this.getWidth() / models.size();
-        for (int i = 0; i < models.size(); i++){
+        for (int i = 0; i < models.size(); i++) {
             models.get(i).setPosition(i * scaleWidth + 1, 1);
         }
     }
 
-    public void paint(Graphics simple){
+    public void paint(Graphics simple) {
         Image buffer = createImage(getWidth(), getHeight());
-        Graphics2D g = (Graphics2D)buffer.getGraphics();
+        Graphics2D g = (Graphics2D) buffer.getGraphics();
 
         g.setColor(new Color(0, 0, 0));
         g.fillRect(0, 0, this.getWidth(), this.getHeight());
-        if (models != null && models.size() != 0){
+        if (models != null && models.size() != 0) {
             update();
-            models.forEach(model -> model.render(g, (float)(this.getWidth() + models.size())/models.size() - 1, (this.getHeight()) / maxHeight));
+            models.forEach(model -> model.render(g, (float) (this.getWidth() + models.size()) / models.size() - 1, (this.getHeight()) / maxHeight));
         }
-        g.setColor(Color.white);
+        g.setColor(Color.WHITE);
         g.setFont(new Font(null, Font.PLAIN, 30));
         g.setColor(Color.YELLOW);
         g.drawString("Array size: " + ((models != null) ? models.size() : 0), 30, 100);
@@ -80,7 +79,7 @@ public class Visualization extends JFrame implements ActionListener{
         repaint();
     }
 
-    void start(){
+    void start() {
         running.start();
     }
 }
