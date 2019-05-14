@@ -35,7 +35,7 @@ public abstract class Sort {
         });
     }
 
-    protected void swap(int i, int j){
+    void swap(int i, int j){
         try {
             Model temp = models.get(i);
             models.set(i, models.get(j));
@@ -58,6 +58,7 @@ public abstract class Sort {
             e.printStackTrace();
         }
     }
+
     protected void sleep(long sleep) throws InterruptedException {
         Thread.sleep(sleep);
     }
