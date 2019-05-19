@@ -24,13 +24,12 @@ public class Main {
 
     public static ArrayList<Model> models = new ArrayList<>();
 
-    public static void main(String... args) throws Exception {
+    public static void main(String... args) {
         menu();
     }
 
     private static void menu() {
-
-        loadSort();
+        loadSorts();
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
@@ -51,17 +50,16 @@ public class Main {
                     System.out.println("     |_____Enter the number of models._____|");
                     try {
                         number = Integer.parseInt(reader.readLine());
-                    } catch (IOException e) {
+                    } catch (IOException | NumberFormatException e) {
                         e.printStackTrace();
                     }
                     addModels(number);
                     visualization.addModels(models);
-                    visualization.start();
                     break;
                 }
 
                 case 2: {
-                    visualization.disSort();
+                    visualization.reset();
                     System.out.println("<-Completed->");
                     break;
                 }
@@ -80,9 +78,7 @@ public class Main {
                     int number = 0;
                     try {
                         number = Integer.parseInt(reader.readLine());
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    } catch (IOException ignored) {}
                     switch (number) {
                         case 1: {
                             start(sorting.get(Keys.DEFAULT));
@@ -131,41 +127,40 @@ public class Main {
     private static void start(Sort sort) {
         Visualization.SORT_NAME = sort.name;
         sort.start();
-        visualization.update();
     }
 
-    private static void loadSort() {
+    private static void loadSorts() {
         sorting.put(Keys.DEFAULT, new UsuallySort());
-        sorting.get(Keys.DEFAULT).addModels(models);
+        sorting.get(Keys.DEFAULT).setModels(models);
 
         sorting.put(Keys.BUBBLE, new BubbleSort());
-        sorting.get(Keys.BUBBLE).addModels(models);
+        sorting.get(Keys.BUBBLE).setModels(models);
 
         sorting.put(Keys.SELECTION, new SelectionSort());
-        sorting.get(Keys.SELECTION).addModels(models);
+        sorting.get(Keys.SELECTION).setModels(models);
 
         sorting.put(Keys.SWAP, new SwapSort());
-        sorting.get(Keys.SWAP).addModels(models);
+        sorting.get(Keys.SWAP).setModels(models);
 
         sorting.put(Keys.GNOME, new GnomeSort());
-        sorting.get(Keys.GNOME).addModels(models);
+        sorting.get(Keys.GNOME).setModels(models);
 
         sorting.put(Keys.QUITE, new QuickSort());
-        sorting.get(Keys.QUITE).addModels(models);
+        sorting.get(Keys.QUITE).setModels(models);
 
         sorting.put(Keys.COMB, new CombSort());
-        sorting.get(Keys.COMB).addModels(models);
+        sorting.get(Keys.COMB).setModels(models);
 
         sorting.put(Keys.HEAP, new HeapSort());
-        sorting.get(Keys.HEAP).addModels(models);
+        sorting.get(Keys.HEAP).setModels(models);
 
         sorting.put(Keys.SHELL, new ShellSort());
-        sorting.get(Keys.SHELL).addModels(models);
+        sorting.get(Keys.SHELL).setModels(models);
     }
 
     private static void addModels(int count) {
         for (; count > 0; count--) {
-            Model model = new Model((int) (Math.random() * 10000), visualization);
+            Model model = new Model((int) (Math.random() * visualization.getHeight()), visualization);
             models.add(model);
         }
         for (; count < 0 && !models.isEmpty(); count++) {

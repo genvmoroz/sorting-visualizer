@@ -2,9 +2,9 @@ package com.frost.vs.sorting;
 
 import com.frost.vs.Model;
 
-import java.awt.*;
+import java.awt.Color;
 
-public class SelectionSort extends Sort{
+public class SelectionSort extends Sort {
 
     public SelectionSort() {
         super("Selection sort");
@@ -17,7 +17,7 @@ public class SelectionSort extends Sort{
             min.setColor(Model.SELECT_COLOR);
             sleep();
             int min_index = i;
-            for (int j = i+1; j < models.size(); j++) {
+            for (int j = i + 1; j < models.size(); j++) {
                 models.get(j).setColor(Model.CHECK_COLOR);
                 sleep();
                 if (models.get(j).getHeight() < min.getHeight()) {
@@ -25,7 +25,7 @@ public class SelectionSort extends Sort{
                     min_index = j;
                     min.setColor(new Color(122, 0, 0));
                     sleep();
-                }else
+                } else
                     models.get(j).setColor(Model.DEFAULT_COLOR);
             }
             sleep();

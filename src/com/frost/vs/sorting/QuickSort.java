@@ -2,9 +2,9 @@ package com.frost.vs.sorting;
 
 import com.frost.vs.Model;
 
-import java.awt.*;
+import java.awt.Color;
 
-public class QuickSort extends Sort{
+public class QuickSort extends Sort {
 
     public QuickSort() {
         super("Quick sort");
@@ -44,8 +44,8 @@ public class QuickSort extends Sort{
             sleep();
             if (i < j) {
                 swap(i, j);
-                models.get(i).setColor(new Color(157, 206,0));
-                models.get(j).setColor(new Color(157, 206,0));
+                models.get(i).setColor(new Color(157, 206, 0));
+                models.get(j).setColor(new Color(157, 206, 0));
                 if (i == cur)
                     cur = j;
                 else if (j == cur)

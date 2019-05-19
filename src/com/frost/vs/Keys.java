@@ -1,6 +1,6 @@
 package com.frost.vs;
 
-public enum  Keys {
+public enum Keys {
 
     DEFAULT("Default"),
     BUBBLE("Bubble"),
@@ -14,10 +14,11 @@ public enum  Keys {
 
     private String key;
 
-    Keys(String key){
+    Keys(String key) {
         this.key = key;
     }
-    public String getKey(){
+
+    public String getKey() {
         return key;
     }
 }

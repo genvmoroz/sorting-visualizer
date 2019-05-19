@@ -2,9 +2,9 @@ package com.frost.vs.sorting;
 
 import com.frost.vs.Model;
 
-import java.awt.*;
+import java.awt.Color;
 
-public class UsuallySort extends Sort{
+public class UsuallySort extends Sort {
 
     public UsuallySort() {
         super("Usually sort");
@@ -29,6 +29,6 @@ public class UsuallySort extends Sort{
                 models.get(i).setColor(Model.DEFAULT_COLOR);
             }
         }
-            drawGreen();
+        drawGreen();
     }
 }

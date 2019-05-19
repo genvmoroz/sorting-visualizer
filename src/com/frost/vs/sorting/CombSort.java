@@ -2,7 +2,7 @@ package com.frost.vs.sorting;
 
 import com.frost.vs.Model;
 
-import java.awt.*;
+import java.awt.Color;
 
 public class CombSort extends Sort {
 

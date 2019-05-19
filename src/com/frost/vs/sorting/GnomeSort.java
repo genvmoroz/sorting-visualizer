@@ -11,15 +11,14 @@ public class GnomeSort extends Sort {
     @Override
     protected void sort() throws InterruptedException {
         int i = 1;
-        while(i < models.size()) {
+        while (i < models.size()) {
             models.get(i).setColor(Model.SELECT_COLOR);
-            if(i==0 || models.get(i - 1).getHeight() <= models.get(i).getHeight()) {
+            if (i == 0 || models.get(i - 1).getHeight() <= models.get(i).getHeight()) {
                 sleep();
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 i++;
 
-            }
-            else {
+            } else {
                 models.get(i - 1).setColor(Model.CHECK_COLOR);
                 sleep();
                 Model temp = models.get(i);
@@ -29,7 +28,6 @@ public class GnomeSort extends Sort {
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 i--;
             }
-
         }
         drawGreen();
     }

@@ -3,7 +3,7 @@ package com.frost.vs.sorting;
 import com.frost.vs.Model;
 import com.frost.vs.Visualization;
 
-import java.awt.*;
+import java.awt.Color;
 import java.util.List;
 
 public abstract class Sort {
@@ -24,7 +24,7 @@ public abstract class Sort {
                 e.printStackTrace();
             }
         });
-        sleep(250);
+        Thread.sleep(250);
         models.forEach(model -> {
             try {
                 sleep();
@@ -35,23 +35,13 @@ public abstract class Sort {
         });
     }
 
-    void swap(int i, int j){
-        try {
-            Model temp = models.get(i);
-            models.set(i, models.get(j));
-            models.set(j, temp);
-        }catch (Exception e){
-            System.err.println("ERROR!");
-        }
-    }
-
-    public void addModels(List<Model> models){
+    public void setModels(List<Model> models) {
         this.models = models;
     }
 
     protected abstract void sort() throws InterruptedException;
 
-    public void start(){
+    public void start() {
         try {
             sort();
         } catch (InterruptedException e) {
@@ -59,11 +49,13 @@ public abstract class Sort {
         }
     }
 
-    protected void sleep(long sleep) throws InterruptedException {
-        Thread.sleep(sleep);
+    void swap(int i, int j) {
+        Model temp = models.get(i);
+        models.set(i, models.get(j));
+        models.set(j, temp);
     }
 
     protected void sleep() throws InterruptedException {
-        Thread.sleep(Visualization.width/(models.size() * 2));
+        Thread.sleep(Visualization.WIDTH / (models.size() * 2));
     }
 }
