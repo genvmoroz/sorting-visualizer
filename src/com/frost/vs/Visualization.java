@@ -11,7 +11,6 @@ import java.awt.Image;
 import java.awt.Point;
 import java.awt.event.ComponentAdapter;
 import java.awt.event.ComponentEvent;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +29,7 @@ public class Visualization extends JFrame {
     /*
         Коллекция моделей.
      */
-    public List<Model> models = new ArrayList<>();
+    public List<Model> models;
 
     /*
         Значение, которое устанавливает
@@ -96,8 +95,13 @@ public class Visualization extends JFrame {
         }
     }
 
+    /**
+     * В этом методе выполняется рисование содержимого окна.
+     *
+     * @param basicGraphics графический объект окна, занимающийся рисованием.
+     */
     @Override
-    public void paint(Graphics simple) {
+    public void paint(Graphics basicGraphics) {
         Image buffer = createImage(getWidth(), getHeight());
         Graphics2D g = (Graphics2D) buffer.getGraphics();
 
@@ -112,6 +116,6 @@ public class Visualization extends JFrame {
         g.setColor(Color.YELLOW);
         g.drawString("Array size: " + (Objects.nonNull(models) ? models.size() : 0), 30, 100);
         g.drawString(SORT_NAME, 30, 140);
-        simple.drawImage(buffer, 0, 0, null);
+        basicGraphics.drawImage(buffer, 0, 0, null);
     }
 }
