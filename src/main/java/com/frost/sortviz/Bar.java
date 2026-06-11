@@ -22,6 +22,9 @@ public final class Bar {
     /** Highlights a pair of bars in the instant just after they swap places. */
     public static final Color SWAP_COLOR = new Color(60, 200, 90);
 
+    /** Colors a bar during the final sweep that confirms the list is sorted. */
+    public static final Color SORTED_COLOR = Color.YELLOW;
+
     private float height;
     private Color color = DEFAULT_COLOR;
 

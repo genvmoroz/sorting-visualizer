@@ -2,7 +2,6 @@ package com.frost.sortviz.sorting;
 
 import com.frost.sortviz.Bar;
 
-import java.awt.Color;
 import java.util.List;
 import java.util.function.IntSupplier;
 
@@ -76,7 +75,7 @@ public abstract class Sort {
     private void sweepSorted() throws InterruptedException {
         for (Bar bar : bars) {
             sleep();
-            bar.setColor(Color.YELLOW);
+            bar.setColor(Bar.SORTED_COLOR);
         }
         Thread.sleep(COMPLETION_PAUSE_MILLIS);
         for (Bar bar : bars) {
