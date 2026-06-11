@@ -1,0 +1,10 @@
+# Maven
+target/
+
+# IntelliJ IDEA (re-generated from pom.xml on import)
+.idea/
+*.iml
+
+# OS / editor cruft
+.DS_Store
+*.swp

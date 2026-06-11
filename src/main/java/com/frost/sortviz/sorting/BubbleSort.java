@@ -1,8 +1,12 @@
-package com.frost.vs.sorting;
+package com.frost.sortviz.sorting;
 
-import com.frost.vs.Model;
+import com.frost.sortviz.Model;
 
-public class BubbleSort extends Sort {
+/**
+ * Bubble sort: repeatedly walks the unsorted prefix swapping adjacent out-of-order pairs, so the
+ * largest remaining element settles at the end of each pass. O(n^2).
+ */
+public final class BubbleSort extends Sort {
 
     public BubbleSort() {
         super("Bubble sort");
@@ -16,11 +20,9 @@ public class BubbleSort extends Sort {
                     sleep();
                     models.get(j).setColor(Model.SELECT_COLOR);
                     models.get(j + 1).setColor(Model.CHECK_COLOR);
-                    Model temp = models.get(j);
                     sleep();
-                    models.set(j, models.get(j + 1));
+                    swap(j, j + 1);
                     models.get(j).setColor(Model.CHECK_COLOR);
-                    models.set(j + 1, temp);
                     models.get(j + 1).setColor(Model.SELECT_COLOR);
                     sleep();
                 }
@@ -28,6 +30,5 @@ public class BubbleSort extends Sort {
                 models.get(j + 1).setColor(Model.DEFAULT_COLOR);
             }
         }
-        drawGreen();
     }
 }

@@ -1,8 +1,12 @@
-package com.frost.vs.sorting;
+package com.frost.sortviz.sorting;
 
-import com.frost.vs.Model;
+import com.frost.sortviz.Model;
 
-public class GnomeSort extends Sort {
+/**
+ * Gnome sort: walks forward while elements are in order and steps back swapping whenever it finds
+ * an out-of-order pair, like sorting flower pots one step at a time. O(n^2).
+ */
+public final class GnomeSort extends Sort {
 
     public GnomeSort() {
         super("Gnome sort");
@@ -17,18 +21,14 @@ public class GnomeSort extends Sort {
                 sleep();
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 i++;
-
             } else {
                 models.get(i - 1).setColor(Model.CHECK_COLOR);
                 sleep();
-                Model temp = models.get(i);
-                models.set(i, models.get(i - 1));
-                models.set(i - 1, temp);
+                swap(i, i - 1);
                 models.get(i - 1).setColor(Model.DEFAULT_COLOR);
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 i--;
             }
         }
-        drawGreen();
     }
 }

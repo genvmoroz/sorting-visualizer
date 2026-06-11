@@ -1,14 +1,20 @@
-package com.frost.vs.sorting;
+package com.frost.sortviz.sorting;
 
-import com.frost.vs.Model;
+import com.frost.sortviz.Model;
 
-public class SwapSort extends Sort {
+/**
+ * Cocktail (bidirectional bubble) sort: alternates a left-to-right pass that pushes the largest
+ * element up with a right-to-left pass that pushes the smallest element down, shrinking the active
+ * range from both ends. O(n^2).
+ */
+public final class CocktailSort extends Sort {
 
-    public SwapSort() {
-        super("Swap sort");
+    public CocktailSort() {
+        super("Cocktail sort");
     }
 
-    public void sort() throws InterruptedException {
+    @Override
+    protected void sort() throws InterruptedException {
         int left = 0;
         int right = models.size() - 1;
         do {
@@ -17,9 +23,7 @@ public class SwapSort extends Sort {
                 models.get(i + 1).setColor(Model.CHECK_COLOR);
                 sleep();
                 if (models.get(i).getHeight() > models.get(i + 1).getHeight()) {
-                    Model temp = models.get(i);
-                    models.set(i, models.get(i + 1));
-                    models.set(i + 1, temp);
+                    swap(i, i + 1);
                 }
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 models.get(i + 1).setColor(Model.DEFAULT_COLOR);
@@ -30,15 +34,12 @@ public class SwapSort extends Sort {
                 models.get(i - 1).setColor(Model.CHECK_COLOR);
                 sleep();
                 if (models.get(i).getHeight() < models.get(i - 1).getHeight()) {
-                    Model temp = models.get(i);
-                    models.set(i, models.get(i - 1));
-                    models.set(i - 1, temp);
+                    swap(i, i - 1);
                 }
                 models.get(i).setColor(Model.DEFAULT_COLOR);
                 models.get(i - 1).setColor(Model.DEFAULT_COLOR);
             }
             left++;
         } while (left <= right);
-        drawGreen();
     }
 }
