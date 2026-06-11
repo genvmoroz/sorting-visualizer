@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 import java.awt.Color;
 
@@ -19,30 +19,30 @@ public final class SelectionSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        for (int i = 0; i < models.size(); i++) {
-            models.get(i).setColor(Model.SELECT_COLOR);
+        for (int i = 0; i < bars.size(); i++) {
+            bars.get(i).setColor(Bar.SELECT_COLOR);
             sleep();
             int minIndex = i;
-            for (int j = i + 1; j < models.size(); j++) {
-                models.get(j).setColor(Model.CHECK_COLOR);
+            for (int j = i + 1; j < bars.size(); j++) {
+                bars.get(j).setColor(Bar.CHECK_COLOR);
                 sleep();
-                if (models.get(j).getHeight() < models.get(minIndex).getHeight()) {
+                if (bars.get(j).getHeight() < bars.get(minIndex).getHeight()) {
                     if (minIndex != i) {
-                        models.get(minIndex).setColor(Model.DEFAULT_COLOR);
+                        bars.get(minIndex).setColor(Bar.DEFAULT_COLOR);
                     }
                     minIndex = j;
-                    models.get(minIndex).setColor(MIN_COLOR);
+                    bars.get(minIndex).setColor(MIN_COLOR);
                     sleep();
                 } else {
-                    models.get(j).setColor(Model.DEFAULT_COLOR);
+                    bars.get(j).setColor(Bar.DEFAULT_COLOR);
                 }
             }
             sleep();
             if (i != minIndex) {
                 swap(i, minIndex);
             }
-            models.get(i).setColor(Model.DEFAULT_COLOR);
-            models.get(minIndex).setColor(Model.DEFAULT_COLOR);
+            bars.get(i).setColor(Bar.DEFAULT_COLOR);
+            bars.get(minIndex).setColor(Bar.DEFAULT_COLOR);
         }
     }
 }

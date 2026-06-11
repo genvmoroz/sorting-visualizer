@@ -1,8 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
-
-import java.awt.Color;
+import com.frost.sortviz.Bar;
 
 /**
  * Comb sort: an improved bubble sort that compares elements a shrinking {@code gap} apart, killing
@@ -20,26 +18,26 @@ public final class CombSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        int gap = models.size();
+        int gap = bars.size();
         boolean swapped = true;
         while (gap > 1 || swapped) {
             if (gap > 1) {
                 gap = (int) (gap / SHRINK_FACTOR);
             }
             swapped = false;
-            for (int i = 0; i + gap < models.size(); i++) {
-                models.get(i).setColor(Model.SELECT_COLOR);
-                models.get(i + gap).setColor(Model.CHECK_COLOR);
+            for (int i = 0; i + gap < bars.size(); i++) {
+                bars.get(i).setColor(Bar.SELECT_COLOR);
+                bars.get(i + gap).setColor(Bar.CHECK_COLOR);
                 sleep();
-                if (models.get(i).getHeight() > models.get(i + gap).getHeight()) {
-                    models.get(i).setColor(Color.GREEN);
-                    models.get(i + gap).setColor(Color.GREEN);
+                if (bars.get(i).getHeight() > bars.get(i + gap).getHeight()) {
+                    bars.get(i).setColor(Bar.SWAP_COLOR);
+                    bars.get(i + gap).setColor(Bar.SWAP_COLOR);
                     sleep();
                     swap(i, i + gap);
                     swapped = true;
                 }
-                models.get(i).setColor(Model.DEFAULT_COLOR);
-                models.get(i + gap).setColor(Model.DEFAULT_COLOR);
+                bars.get(i).setColor(Bar.DEFAULT_COLOR);
+                bars.get(i + gap).setColor(Bar.DEFAULT_COLOR);
             }
         }
     }

@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 import java.awt.Color;
 
@@ -22,7 +22,7 @@ public final class QuickSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        quicksort(0, models.size() - 1);
+        quicksort(0, bars.size() - 1);
     }
 
     private void quicksort(int start, int end) throws InterruptedException {
@@ -34,23 +34,23 @@ public final class QuickSort extends Sort {
         int pivot = start + (end - start) / 2;
         while (i < j) {
             sleep();
-            while (i < pivot && models.get(i).getHeight() <= models.get(pivot).getHeight()) {
+            while (i < pivot && bars.get(i).getHeight() <= bars.get(pivot).getHeight()) {
                 i++;
                 sleep();
             }
-            while (j > pivot && models.get(pivot).getHeight() <= models.get(j).getHeight()) {
+            while (j > pivot && bars.get(pivot).getHeight() <= bars.get(j).getHeight()) {
                 j--;
-                models.get(j).setColor(SCAN_COLOR);
-                models.get(pivot).setColor(SCAN_COLOR);
+                bars.get(j).setColor(SCAN_COLOR);
+                bars.get(pivot).setColor(SCAN_COLOR);
                 sleep();
             }
-            models.get(i).setColor(Model.DEFAULT_COLOR);
-            models.get(j).setColor(Model.DEFAULT_COLOR);
-            models.get(pivot).setColor(Model.DEFAULT_COLOR);
+            bars.get(i).setColor(Bar.DEFAULT_COLOR);
+            bars.get(j).setColor(Bar.DEFAULT_COLOR);
+            bars.get(pivot).setColor(Bar.DEFAULT_COLOR);
             if (i < j) {
                 swap(i, j);
-                models.get(i).setColor(SWAP_COLOR);
-                models.get(j).setColor(SWAP_COLOR);
+                bars.get(i).setColor(SWAP_COLOR);
+                bars.get(j).setColor(SWAP_COLOR);
                 if (i == pivot) {
                     pivot = j;
                 } else if (j == pivot) {
@@ -59,9 +59,9 @@ public final class QuickSort extends Sort {
             }
             sleep();
         }
-        models.get(i).setColor(Model.DEFAULT_COLOR);
-        models.get(j).setColor(Model.DEFAULT_COLOR);
-        models.get(pivot).setColor(Model.DEFAULT_COLOR);
+        bars.get(i).setColor(Bar.DEFAULT_COLOR);
+        bars.get(j).setColor(Bar.DEFAULT_COLOR);
+        bars.get(pivot).setColor(Bar.DEFAULT_COLOR);
         quicksort(start, pivot);
         quicksort(pivot + 1, end);
     }

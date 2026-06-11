@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 /**
  * Cocktail (bidirectional bubble) sort: alternates a left-to-right pass that pushes the largest
@@ -16,28 +16,28 @@ public final class CocktailSort extends Sort {
     @Override
     protected void sort() throws InterruptedException {
         int left = 0;
-        int right = models.size() - 1;
+        int right = bars.size() - 1;
         do {
             for (int i = left; i < right; i++) {
-                models.get(i).setColor(Model.SELECT_COLOR);
-                models.get(i + 1).setColor(Model.CHECK_COLOR);
+                bars.get(i).setColor(Bar.SELECT_COLOR);
+                bars.get(i + 1).setColor(Bar.CHECK_COLOR);
                 sleep();
-                if (models.get(i).getHeight() > models.get(i + 1).getHeight()) {
+                if (bars.get(i).getHeight() > bars.get(i + 1).getHeight()) {
                     swap(i, i + 1);
                 }
-                models.get(i).setColor(Model.DEFAULT_COLOR);
-                models.get(i + 1).setColor(Model.DEFAULT_COLOR);
+                bars.get(i).setColor(Bar.DEFAULT_COLOR);
+                bars.get(i + 1).setColor(Bar.DEFAULT_COLOR);
             }
             right--;
             for (int i = right; i > left; i--) {
-                models.get(i).setColor(Model.SELECT_COLOR);
-                models.get(i - 1).setColor(Model.CHECK_COLOR);
+                bars.get(i).setColor(Bar.SELECT_COLOR);
+                bars.get(i - 1).setColor(Bar.CHECK_COLOR);
                 sleep();
-                if (models.get(i).getHeight() < models.get(i - 1).getHeight()) {
+                if (bars.get(i).getHeight() < bars.get(i - 1).getHeight()) {
                     swap(i, i - 1);
                 }
-                models.get(i).setColor(Model.DEFAULT_COLOR);
-                models.get(i - 1).setColor(Model.DEFAULT_COLOR);
+                bars.get(i).setColor(Bar.DEFAULT_COLOR);
+                bars.get(i - 1).setColor(Bar.DEFAULT_COLOR);
             }
             left++;
         } while (left <= right);

@@ -1,8 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
-
-import java.awt.Color;
+import com.frost.sortviz.Bar;
 
 /**
  * Naive exchange sort: for each position {@code i}, scan the rest of the list and swap whenever a
@@ -16,19 +14,21 @@ public final class ExchangeSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        for (int i = 0; i < models.size(); i++) {
-            models.get(i).setColor(Model.SELECT_COLOR);
-            for (int j = i + 1; j < models.size(); j++) {
-                models.get(j).setColor(Model.CHECK_COLOR);
+        for (int i = 0; i < bars.size(); i++) {
+            bars.get(i).setColor(Bar.SELECT_COLOR);
+            for (int j = i + 1; j < bars.size(); j++) {
+                bars.get(j).setColor(Bar.CHECK_COLOR);
                 sleep();
-                if (models.get(i).getHeight() > models.get(j).getHeight()) {
+                if (bars.get(i).getHeight() > bars.get(j).getHeight()) {
                     swap(i, j);
-                    models.get(j).setColor(Color.BLACK);
-                    models.get(i).setColor(Model.SELECT_COLOR);
+                    bars.get(i).setColor(Bar.SWAP_COLOR);
+                    bars.get(j).setColor(Bar.SWAP_COLOR);
+                    sleep();
+                    bars.get(i).setColor(Bar.SELECT_COLOR);
                 }
-                models.get(j).setColor(Model.DEFAULT_COLOR);
+                bars.get(j).setColor(Bar.DEFAULT_COLOR);
             }
-            models.get(i).setColor(Model.DEFAULT_COLOR);
+            bars.get(i).setColor(Bar.DEFAULT_COLOR);
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.frost.sortviz.view;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 import javax.swing.JFrame;
 import javax.swing.Timer;
@@ -31,8 +31,8 @@ public final class Visualization extends JFrame {
     }
 
     /** Binds the bars the window should render (the same list the algorithms reorder). */
-    public void setModels(List<Model> models) {
-        panel.setModels(models);
+    public void setBars(List<Bar> bars) {
+        panel.setBars(bars);
     }
 
     public void setSortName(String sortName) {

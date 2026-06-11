@@ -30,13 +30,13 @@ public final class Main {
     /** Maximum random bar value; also the natural canvas height in pixels. */
     private static final int MAX_BAR_VALUE = 500;
 
-    private final List<Model> bars = new ArrayList<>();
+    private final List<Bar> bars = new ArrayList<>();
     private final List<Sort> algorithms;
     private final Visualization visualization;
 
     private Main(Visualization visualization) {
         this.visualization = visualization;
-        this.visualization.setModels(bars);
+        this.visualization.setBars(bars);
         this.algorithms = List.of(
                 new ExchangeSort(),
                 new BubbleSort(),
@@ -48,7 +48,7 @@ public final class Main {
                 new HeapSort(),
                 new ShellSort());
         for (Sort algorithm : algorithms) {
-            algorithm.setModels(bars);
+            algorithm.setBars(bars);
             algorithm.setStepDelay(this::stepDelayMillis);
         }
     }
@@ -83,9 +83,9 @@ public final class Main {
             return;
         }
         for (int i = 0; i < count; i++) {
-            bars.add(new Model(ThreadLocalRandom.current().nextInt(1, MAX_BAR_VALUE + 1)));
+            bars.add(new Bar(ThreadLocalRandom.current().nextInt(1, MAX_BAR_VALUE + 1)));
         }
-        visualization.setModels(bars);
+        visualization.setBars(bars);
         System.out.println("Now showing " + bars.size() + " bars.");
     }
 
@@ -95,7 +95,7 @@ public final class Main {
             return;
         }
         visualization.setSortName("");
-        for (Model bar : bars) {
+        for (Bar bar : bars) {
             bar.setHeight(ThreadLocalRandom.current().nextInt(1, MAX_BAR_VALUE + 1));
         }
         visualization.refreshScale();

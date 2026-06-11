@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 /**
  * Heap sort: builds a binary max-heap in place, then repeatedly swaps the root (largest element)
@@ -14,7 +14,7 @@ public final class HeapSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        int n = models.size();
+        int n = bars.size();
         // Build the max-heap from the last parent down to the root.
         for (int parent = n / 2 - 1; parent >= 0; parent--) {
             siftDown(parent, n);
@@ -33,21 +33,21 @@ public final class HeapSort extends Sort {
             int left = 2 * root + 1;
             int right = 2 * root + 2;
             sleep();
-            if (left < size && models.get(left).getHeight() > models.get(largest).getHeight()) {
+            if (left < size && bars.get(left).getHeight() > bars.get(largest).getHeight()) {
                 largest = left;
             }
-            if (right < size && models.get(right).getHeight() > models.get(largest).getHeight()) {
+            if (right < size && bars.get(right).getHeight() > bars.get(largest).getHeight()) {
                 largest = right;
             }
             if (largest == root) {
                 return;
             }
-            models.get(root).setColor(Model.SELECT_COLOR);
-            models.get(largest).setColor(Model.CHECK_COLOR);
+            bars.get(root).setColor(Bar.SELECT_COLOR);
+            bars.get(largest).setColor(Bar.CHECK_COLOR);
             sleep();
             swap(root, largest);
-            models.get(root).setColor(Model.DEFAULT_COLOR);
-            models.get(largest).setColor(Model.DEFAULT_COLOR);
+            bars.get(root).setColor(Bar.DEFAULT_COLOR);
+            bars.get(largest).setColor(Bar.DEFAULT_COLOR);
             root = largest;
         }
     }

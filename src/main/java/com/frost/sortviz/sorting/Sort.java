@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 import java.awt.Color;
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.function.IntSupplier;
 /**
  * Base class for every visualized sorting algorithm.
  *
- * <p>Subclasses implement {@link #sort()} to reorder the shared {@link #models} list, recoloring
+ * <p>Subclasses implement {@link #sort()} to reorder the shared {@link #bars} list, recoloring
  * elements as they compare and swap them and calling {@link #sleep()} to pace the animation.
  * {@link #start()} drives one full run and then plays a final "sorted" sweep.
  */
@@ -20,7 +20,7 @@ public abstract class Sort {
 
     private final String name;
 
-    protected List<Model> models;
+    protected List<Bar> bars;
 
     /** Per-step delay in milliseconds; the view injects one tied to the window width. */
     private IntSupplier stepDelayMillis = () -> 0;
@@ -33,8 +33,8 @@ public abstract class Sort {
         return name;
     }
 
-    public void setModels(List<Model> models) {
-        this.models = models;
+    public void setBars(List<Bar> bars) {
+        this.bars = bars;
     }
 
     public void setStepDelay(IntSupplier stepDelayMillis) {
@@ -54,14 +54,14 @@ public abstract class Sort {
         }
     }
 
-    /** Reorders {@link #models} into ascending order by {@link Model#getHeight()}. */
+    /** Reorders {@link #bars} into ascending order by {@link Bar#getHeight()}. */
     protected abstract void sort() throws InterruptedException;
 
     /** Swaps the bars at positions {@code i} and {@code j}. */
     protected void swap(int i, int j) {
-        Model temp = models.get(i);
-        models.set(i, models.get(j));
-        models.set(j, temp);
+        Bar temp = bars.get(i);
+        bars.set(i, bars.get(j));
+        bars.set(j, temp);
     }
 
     /** Paces the animation; called at every comparison and move. A non-positive delay is a no-op. */
@@ -74,14 +74,14 @@ public abstract class Sort {
 
     /** Sweeps left to right coloring every bar, holds briefly, then restores the default color. */
     private void sweepSorted() throws InterruptedException {
-        for (Model model : models) {
+        for (Bar bar : bars) {
             sleep();
-            model.setColor(Color.YELLOW);
+            bar.setColor(Color.YELLOW);
         }
         Thread.sleep(COMPLETION_PAUSE_MILLIS);
-        for (Model model : models) {
+        for (Bar bar : bars) {
             sleep();
-            model.setColor(Model.DEFAULT_COLOR);
+            bar.setColor(Bar.DEFAULT_COLOR);
         }
     }
 

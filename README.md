@@ -55,7 +55,7 @@ Exchange · Bubble · Selection · Cocktail (bidirectional bubble) · Gnome · Q
 ```
 src/main/java/com/frost/sortviz
 ├── Main.java            # entry point + console menu (registry-driven)
-├── Model.java           # one bar: value + color + how to draw itself
+├── Bar.java             # one bar: value + color + how to draw itself
 ├── sorting/             # Sort base class + the nine algorithms
 └── view/                # Visualization (JFrame) + VisualizationPanel (JPanel canvas)
 src/test/java/com/frost/sortviz/sorting

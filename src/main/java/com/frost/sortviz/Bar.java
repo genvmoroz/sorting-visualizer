@@ -5,10 +5,10 @@ import java.awt.Graphics2D;
 
 /**
  * A single bar in the visualization: a numeric value ({@link #height}) together with the
- * color it is currently drawn in. Algorithms reorder a list of {@code Model}s and recolor
+ * color it is currently drawn in. Algorithms reorder a list of {@code Bar}s and recolor
  * them to highlight comparisons and swaps; the view turns each one into a rectangle.
  */
-public final class Model {
+public final class Bar {
 
     /** Resting color of a bar that is not currently involved in a comparison or swap. */
     public static final Color DEFAULT_COLOR = new Color(240, 244, 255);
@@ -19,10 +19,13 @@ public final class Model {
     /** Highlights the element currently being compared against the selected one. */
     public static final Color CHECK_COLOR = new Color(0, 167, 188);
 
+    /** Highlights a pair of bars in the instant just after they swap places. */
+    public static final Color SWAP_COLOR = new Color(60, 200, 90);
+
     private float height;
     private Color color = DEFAULT_COLOR;
 
-    public Model(float height) {
+    public Bar(float height) {
         this.height = height;
     }
 

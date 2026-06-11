@@ -1,6 +1,6 @@
 package com.frost.sortviz.view;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 import javax.swing.JPanel;
 import java.awt.Color;
@@ -22,7 +22,7 @@ final class VisualizationPanel extends JPanel {
     private static final int PREFERRED_HEIGHT = 500;
     private static final Font OVERLAY_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 30);
 
-    private volatile List<Model> models = List.of();
+    private volatile List<Bar> bars = List.of();
     private volatile float maxHeight = 1f;
     private volatile String sortName = "";
 
@@ -31,8 +31,8 @@ final class VisualizationPanel extends JPanel {
         setBackground(Color.BLACK);
     }
 
-    void setModels(List<Model> models) {
-        this.models = models;
+    void setBars(List<Bar> bars) {
+        this.bars = bars;
         recomputeMaxHeight();
     }
 
@@ -43,8 +43,8 @@ final class VisualizationPanel extends JPanel {
     /** Recomputes the tallest bar so the vertical scaling stays correct after an add or shuffle. */
     void recomputeMaxHeight() {
         float max = 1f;
-        for (Model model : models) {
-            max = Math.max(max, model.getHeight());
+        for (Bar bar : bars) {
+            max = Math.max(max, bar.getHeight());
         }
         maxHeight = max;
     }
@@ -56,7 +56,7 @@ final class VisualizationPanel extends JPanel {
         int width = getWidth();
         int height = getHeight();
 
-        List<Model> snapshot = models;
+        List<Bar> snapshot = bars;
         int size = snapshot.size();
         if (size > 0) {
             int barWidth = Math.max(1, width / size);

@@ -1,6 +1,6 @@
 package com.frost.sortviz.sorting;
 
-import com.frost.sortviz.Model;
+import com.frost.sortviz.Bar;
 
 /**
  * Shell sort: generalised insertion sort that compares elements a {@code gap} apart, shrinking the
@@ -14,24 +14,24 @@ public final class ShellSort extends Sort {
 
     @Override
     protected void sort() throws InterruptedException {
-        int gap = models.size() / 2;
+        int gap = bars.size() / 2;
         while (gap > 0) {
-            for (int i = gap; i < models.size(); i++) {
-                Model current = models.get(i);
-                current.setColor(Model.SELECT_COLOR);
+            for (int i = gap; i < bars.size(); i++) {
+                Bar current = bars.get(i);
+                current.setColor(Bar.SELECT_COLOR);
                 sleep();
                 int j = i;
-                while (j >= gap && models.get(j - gap).getHeight() > current.getHeight()) {
-                    models.get(j - gap).setColor(Model.CHECK_COLOR);
-                    models.set(j, models.get(j - gap));
+                while (j >= gap && bars.get(j - gap).getHeight() > current.getHeight()) {
+                    bars.get(j - gap).setColor(Bar.CHECK_COLOR);
+                    bars.set(j, bars.get(j - gap));
                     sleep();
-                    models.get(j - gap).setColor(Model.DEFAULT_COLOR);
-                    models.get(j).setColor(Model.DEFAULT_COLOR);
+                    bars.get(j - gap).setColor(Bar.DEFAULT_COLOR);
+                    bars.get(j).setColor(Bar.DEFAULT_COLOR);
                     j -= gap;
                     sleep();
                 }
-                models.set(j, current);
-                current.setColor(Model.DEFAULT_COLOR);
+                bars.set(j, current);
+                current.setColor(Bar.DEFAULT_COLOR);
             }
             gap = (gap == 2) ? 1 : (int) (gap * (5.0 / 11));
         }
